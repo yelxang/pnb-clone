@@ -36,39 +36,56 @@
         CHOOSE FROM OUR PRODUCTS <span class="arrow">›</span>
       </a>
     </section>
-    <section class="hero-right">
-      <div class="login-card">
-        <h2>Log in</h2>
-        <p class="sub">Access your account securely</p>
-        <form id="login-form">
-          <label for="email">Email / Username</label>
-          <input
-            id="email"
-            type="text"
-            placeholder="Enter email or username"
-            required>
-          <label for="pass">Password</label>
-          <input
-            id="pass"
-            type="password"
-            placeholder="Enter password"
-            required>
-          <div class="row">
-            <label class="check">
-              <input type="checkbox">
-              Remember me
-            </label>
-            <a class="link" href="#">Forgot password?</a>
-          </div>
-          <button type="submit" class="login-btn">
-            LOGIN
-          </button>
-        </form>
-      </div>
-    </section>
+      <section class="hero-right">
+    <div class="login-card">
+      <h2>Change Password</h2>
+      <p class="sub">Update your account password</p>
+
+      <form id="change-password-form">
+        <label for="email">Email / Username</label>
+        <input
+          id="email"
+          type="text"
+          placeholder="Enter email or username"
+          required>
+
+        <label for="old-pass">Current Password</label>
+        <input
+          id="old-pass"
+          type="password"
+          placeholder="Enter current password"
+          required>
+
+        <label for="new-pass">New Password</label>
+        <input
+          id="new-pass"
+          type="password"
+          placeholder="Enter new password"
+          required>
+
+        <label for="confirm-pass">Confirm New Password</label>
+        <input
+          id="confirm-pass"
+          type="password"
+          placeholder="Confirm new password"
+          required>
+
+        <div class="row">
+          <label class="check">
+            <input type="checkbox">
+            Remember me
+          </label>
+        </div>
+
+        <button type="submit" class="login-btn">
+          CHANGE PASSWORD
+        </button>
+      </form>
+    </div>
+  </section>
   </main>
   <div id="success-message" class="success-message">
-    ✔ Login successful!
+    ✔ Password changed successfully!
   </div>
   <script src="script.js"></script>
 </body>
