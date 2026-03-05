@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dashboard</title>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    .dash-wrap{
+      max-width: 900px;
+      margin: 40px auto;
+      padding: 20px;
+    }
+    .dash-card{
+      background: rgba(255,255,255,.92);
+      border: 1px solid #e6edf5;
+      border-radius: 18px;
+      padding: 22px;
+      box-shadow: 0 18px 50px rgba(10,37,83,.14);
+    }
+    .dash-title{
+      margin: 0 0 8px;
+      color:#0b2f6b;
+      font-weight:900;
+      font-size: 28px;
+    }
+    .dash-sub{
+      margin: 0;
+      color:#6b7a90;
+    }
+  </style>
+</head>
+<body>
+
+  <header class="nav">
+    <div class="brand">
+      <img src="pnblogo.png" alt="PNB Logo" class="logo">
+    </div>
+  </header>
+
+  <div class="dash-wrap">
+    <div class="dash-card">
+      <h1 class="dash-title">Welcome!</h1>
+      <p class="dash-sub">
+        Logged in as: <strong id="user-email">---</strong>
+      </p>
+    </div>
+  </div>
+
+  <script>
+document.addEventListener("DOMContentLoaded", () => {
+
+  const email = localStorage.getItem("demo_email");
+  const emailDisplay = document.getElementById("user-email");
+
+  if (!email) {
+    window.location.href = "index.html";
+    return;
+  }
+
+  emailDisplay.textContent = email;
+
+});
+</script>
+</body>
+</html>
