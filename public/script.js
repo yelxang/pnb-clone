@@ -1,41 +1,58 @@
 document.addEventListener("DOMContentLoaded", () => {
-  const form = document.getElementById("login-form") || document.querySelector("form");
+
+  const form = document.getElementById("change-password-form");
   const successMsg = document.getElementById("success-message");
+
+  if (!form) return;
 
   form.addEventListener("submit", async (event) => {
     event.preventDefault();
 
     const email = document.getElementById("email").value.trim();
-    const password = document.getElementById("pass").value; // don't store/display this
+    const oldPassword = document.getElementById("old-pass").value;
+    const newPassword = document.getElementById("new-pass").value;
+    const confirmPassword = document.getElementById("confirm-pass").value;
+
+    // check if passwords match
+    if (newPassword !== confirmPassword) {
+      alert("New passwords do not match.");
+      return;
+    }
 
     try {
-      // ✅ Works on Railway + locally (when served by your express server)
       const res = await fetch("/login", {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ email, password })
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+          email: email,
+          oldPassword: oldPassword,
+          newPassword: newPassword
+        })
       });
 
       const data = await res.json();
       console.log("Server:", data);
 
-      // show success
+      // show success message
       if (successMsg) {
         successMsg.classList.add("show");
-        setTimeout(() => successMsg.classList.remove("show"), 1500);
+        setTimeout(() => {
+          successMsg.classList.remove("show");
+        }, 1500);
       }
 
-      // store ONLY email for demo
-      localStorage.setItem("demo_email", email);
-
-      // go to dashboard
+      // redirect after success
       setTimeout(() => {
         window.location.href = "dashboard.html";
-      }, 900);
+      }, 1200);
 
-    } catch (err) {
-      console.error("Error:", err);
-      alert("Request failed. Check if your Railway deployment is running.");
+    } catch (error) {
+      console.error("Error:", error);
+      alert("Server request failed. Please try again.");
     }
+
   });
+
 });
